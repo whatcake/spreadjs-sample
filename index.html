@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SpreadJS Sample</title>
+    <!-- SpreadJS Styles -->
+    <link href="https://cdn.mescius.com/spreadjs/hosted/css/gc.spread.sheets.excel2013white.19.0.0.css" rel="stylesheet" type="text/css" />
+    <!-- SpreadJS Core Library -->
+    <script type="text/javascript" src="https://cdn.mescius.com/spreadjs/hosted/scripts/gc.spread.sheets.all.19.0.0.min.js"></script>
+    <style>
+        #spreadContainer {
+            width: 100%;
+            height: 500px;
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+    <h1>SpreadJS Basic Sample</h1>
+    <div id="spreadContainer"></div>
+
+    <script>
+        // Initialize SpreadJS when the page loads
+        window.onload = function() {
+            // Create a new workbook
+            var spread = new GC.Spread.Sheets.Workbook(document.getElementById("spreadContainer"));
+            
+            // Get the active sheet
+            var sheet = spread.getActiveSheet();
+            
+            // Set some sample data
+            sheet.setValue(0, 0, "Hello");
+            sheet.setValue(0, 1, "SpreadJS!");
+            sheet.setValue(1, 0, "Sample");
+            sheet.setValue(1, 1, "Data");
+            
+            // Add a formula
+            sheet.setFormula(2, 0, "=SUM(A1:B2)");
+            
+            // Style the header row
+            var style = new GC.Spread.Sheets.Style();
+            style.backColor = "#f0f0f0";
+            style.font = "bold 12pt Arial";
+            sheet.setStyle(0, 0, style);
+            sheet.setStyle(0, 1, style);
+        };
+    </script>
+</body>
+</html>
